@@ -1,5 +1,9 @@
 # SignAuth - Handwritten Signatures Authentication
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/360modder/signauth/master/temp/20210328_174018.jpg">
+</p>
+
 *signauth* is a deep learning model built using pytorch which can authenticate handwritten signatures using cnn image classification. Model can differentiate between fake and real handwritten signatures. Model is also available in tensorflow lite format for building and binding on mobile devices.
 
 For more precision model uses image of **256x256** pixels, this cause in higher model sizes but accuracy at human level is more.
