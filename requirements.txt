@@ -1,0 +1,9 @@
+torch
+torchvision
+pillow
+colorama
+cv2
+numpy
+tensorflow
+onnx
+https://github.com/onnx/onnx-tensorflow/archive/master.zip
