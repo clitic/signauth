@@ -6,7 +6,7 @@ For more precision model uses image of **256x256** pixels, this cause in higher 
 
 Model needs labels for every signatures (*supervised learning*). If model is trained with low data it will cause lack in accuracy. When trained with two signs, if third unknown unclassified sign is passed to model then prediction is very bad. It classifies sign from one of the classes from present classes.
 
-The development handwritten signatures dataset is used from [kaggle](https://www.kaggle.com/divyanshari/handwritten-signatures "dataset") datasets.
+The development handwritten signatures dataset is used from [kaggle](https://www.kaggle.com/divyanshrai/handwritten-signatures "dataset") datasets.
 
 
 ## Getting Started
@@ -30,7 +30,7 @@ python train.py
 python predict.py
 ```
 
-The main model.py or the model class is situated [here](https://www. "__init__.py") or simply **models/__init__.py** in this file.
+The main model.py or the model class is situated [here](https://www.github.com/360modder/signauth/blob/master/models/__init__.py "__init__.py") or simply **models/__init__.py** in this file.
 
 
 ## CLI Tools
