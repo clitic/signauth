@@ -112,3 +112,5 @@ for epoch in range(num_epochs):
     if test_accuracy > best_accuracy:
         torch.save(model.state_dict(),"models/model.pth")
         best_accuracy = test_accuracy
+
+print(f"The maximum accuracy obtained by model is {best_accuracy}")
