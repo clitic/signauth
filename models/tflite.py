@@ -18,7 +18,7 @@ dummy_input = torch.randn(1, 3, 256, 256)
 torch.onnx.export(pytorch_model, dummy_input, "../temp/model.onnx")
  
 onnx_model = onnx.load("../temp/model.onnx")
-print(onnx.checker.check_model(onnx_model))
+onnx.checker.check_model(onnx_model)
  
 tf_model = onnx_tf.backend.prepare(onnx_model)
 tf_model.export_graph("../temp/model.pb") 

@@ -6,7 +6,7 @@ from PIL import Image
 # Hyper-parameters (Default)
 num_classes = 2
 num_epochs = 10
-batch_size = 4
+batch_size = 20
 learning_rate = 0.001
 
 
