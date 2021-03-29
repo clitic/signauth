@@ -2,7 +2,7 @@
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/360modder/signauth/master/others/sample.jpg">
-  <a href="https://colab.research.google.com/github/360modder/signauth/blob/master/others/openincolab.ipynb">
+  <a href="https://colab.research.google.com/github/360modder/signauth/blob/master/others/SignAuth_Google_Colab.ipynb">
     <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
   </a>
 </p>
@@ -26,7 +26,7 @@ Default images are labeled as XXXYYZZZ
 
 So if XXX equal ZZZ then it is a real signature, and if XXX notequal to ZZZ then it is a fake signature.
 
-You can run the below commands to test out the model.
+You can run the below commands to test out the model or [open in colab]](https://colab.research.google.com/github/360modder/signauth/blob/master/others/SignAuth_Google_Colab.ipynb).
 
 ```bash
 git clone https://www.github.com/360modder/signauth.git
