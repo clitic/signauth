@@ -25,7 +25,7 @@ class ptjit(object):
 		self.path = path
 
 	def save(self, modelclass, standardinput):
-		traced_cell = torch.jit.trace(model, standardinput)
+		traced_cell = torch.jit.trace(modelclass, standardinput)
 		torch.jit.save(traced_cell, self.path)
 
 	def load(self):

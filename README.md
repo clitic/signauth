@@ -30,10 +30,23 @@ So if XXX equal ZZZ then it is a real signature, and if XXX notequal to ZZZ then
 
 You can run the below commands to test out the model or [open in colab](https://colab.research.google.com/github/360modder/signauth/blob/master/others/SignAuth_Google_Colab.ipynb).
 
+- Intitial Setup
+
 ```bash
 git clone https://www.github.com/360modder/signauth.git
 cd signauth
 pip install -r requirements.txt
+```
+
+- Pre-Trained Model
+
+```bash
+python production/signauth.py image_path --scan
+```
+
+- Training & Predicting
+
+```bash
 python preprocessing/preprocessor.py --process=train,test,predict --backup --overwrite
 python train.py
 python predict.py
@@ -47,6 +60,7 @@ The main model.py or the model class is situated [here](https://www.github.com/3
 For more easy usage of program is divided into modules and created in cli interface mode. Some of tools you can access are, 
 
 ```bash
+python production/signauth.py -h
 python train.py -h
 python preprocessing/preprocessor.py -h
 ```
@@ -92,6 +106,17 @@ python preprocessing/preprocessor.py --process=predict --scan --backup
 ```
 
 This will reshape images into ascpect ratio 1:1 and resize them to 256x256 with a scan filter for model.
+
+
+## Production Build
+
+For production purposes the main model is jitted using a standard input and then used. Building of one such model can be done by the following command.
+
+```bash
+python models/production.py
+```
+
+> Note : You must run this script after training a model and getting an model.pth file in models folder.
 
 
 ## Tensorflow Lite Model
