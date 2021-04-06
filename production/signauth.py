@@ -4,6 +4,10 @@ from PIL import Image
 import cv2
 import numpy as np
 import argparse
+import os
+
+
+os.chdir(os.path.split(__file__)[0])
 
 
 def processimage(img_path, scan=False):
