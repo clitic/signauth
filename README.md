@@ -7,16 +7,11 @@
   </a>
 </p>
 
-*signauth* is a deep learning model built using pytorch which can authenticate handwritten signatures using cnn image classification. Model can differentiate between fake and real handwritten signatures. Model is also available in tensorflow lite format for building and binding on mobile devices.
+*signauth* is a deep learning model built using pytorch which can authenticate handwritten signatures using cnn image classification. Model can differentiate between fake and real handwritten signatures. Model needs labels for every signatures (*supervised learning*). For more precision model uses image of **256x256** pixels, this cause in higher model sizes but accuracy is more.
 
 Model was able to get 98.8999% accuracy on test images. You can download that model from [google drive](https://drive.google.com/uc?export=download&id=1MB6FgraqQpwXP9E8kHlgW3qHJpxUcj6P).
 
-For more precision model uses image of **256x256** pixels, this cause in higher model sizes but accuracy at human level is more.
-
-Model needs labels for every signatures (*supervised learning*). If model is trained with low data it will cause lack in accuracy. When trained with two signs, if third unknown unclassified sign is passed to model then prediction is very bad. It classifies sign from one of the classes from present classes.
-
-The development handwritten signatures dataset is used from [kaggle](https://www.kaggle.com/divyanshrai/handwritten-signatures "dataset") datasets.
-
+The development handwritten signatures dataset is used from this [kaggle](https://www.kaggle.com/divyanshrai/handwritten-signatures "dataset") dataset.
 
 ## Getting Started
 
@@ -27,8 +22,6 @@ Default images are labeled as XXXYYZZZ
 - ZZZ -> real person id who has this signature style
 
 So if XXX equal ZZZ then it is a real signature, and if XXX notequal to ZZZ then it is a fake signature.
-
-You can run the below commands to test out the model or [open in colab](https://colab.research.google.com/github/360modder/signauth/blob/master/others/SignAuth_Google_Colab.ipynb).
 
 - Intitial Setup
 
@@ -41,30 +34,18 @@ pip install -r requirements.txt
 - Pre-Trained Model
 
 ```bash
-python production/signauth.py image_path --scan
+python api/signauth.py <image path> --scan
 ```
 
 - Training & Predicting
 
 ```bash
-python preprocessing/preprocessor.py --process=train,test,predict --backup --overwrite
+python preprocessing/preprocessor.py --process train,test,predict --backup --overwrite
 python train.py
 python predict.py
 ```
 
-The main model.py or the model class is situated [here](https://www.github.com/360modder/signauth/blob/master/models/__init__.py "__init__.py") or simply **models/__init__.py** in this file.
-
-
-## CLI Tools
-
-For more easy usage of program is divided into modules and created in cli interface mode. Some of tools you can access are, 
-
-```bash
-python production/signauth.py -h
-python train.py -h
-python preprocessing/preprocessor.py -h
-```
-
+The main model.py or the model class is [models/__init__.py](models/__init__.py).
 
 ## Training
 
@@ -87,7 +68,7 @@ python preprocessing/preprocessor.py --backup
 After prepration of data you run in command line.
 
 ```bash
-python train.py --classes=2 --update
+python train.py --classes 2 --update
 ```
 
 
@@ -102,15 +83,15 @@ python predict.py
 If images are not of 256x256 or any other issue you can place them inside **data/predict** folder then run this command.
 
 ```bash
-python preprocessing/preprocessor.py --process=predict --scan --backup
+python preprocessing/preprocessor.py --process predict --scan --backup
 ```
 
 This will reshape images into ascpect ratio 1:1 and resize them to 256x256 with a scan filter for model.
 
 
-## Production Build
+## API Model Build
 
-For production purposes the main model is jitted using a standard input and then used. Building of one such model can be done by the following command.
+For building model for api can be done by jitting the main model using a standard input and then used. Building of one such model can be done by the following command.
 
 ```bash
 python models/production.py
@@ -121,7 +102,7 @@ python models/production.py
 
 ## Tensorflow Lite Model
 
-Once you have trained a model it is generated in models directory under name *model.pth*. To convert this model to tensorflow lite model first install all dependencies then run the following commands.
+Once you have trained a model it is generated in models directory under name *model.pth*. To convert this model to tensorflow lite model first install all commentend dependencies in [requirements.txt](requirements.txt) then run the following commands.
 
 The model conversion chain is followed as *pytorch -> onnx -> tf -> tflite*.
 
@@ -134,8 +115,8 @@ This command will create a tflite model in models directory. You can further twe
 
 ## TODO
 
-- fixing predictions for an unclassified sign
-- better model with higher accuracy and more correct and precise predictions (classifications)
+- fixing predictions for an un-classified sign
+- more correct and precise predictions (classifications)
 
 
 ## License

@@ -9,7 +9,6 @@ num_epochs = 10
 batch_size = 20
 learning_rate = 0.001
 
-
 # Image Transformations
 transform = transforms.Compose([
     transforms.Resize((256, 256)),
@@ -17,7 +16,6 @@ transform = transforms.Compose([
     transforms.ToTensor(),
     transforms.Normalize([0.5, 0.5, 0.5], [0.5, 0.5, 0.5]),
     ])
-
 
 # CNN Neural Network
 class ConvNet(nn.Module):
@@ -33,7 +31,6 @@ class ConvNet(nn.Module):
         self.bn3 = nn.BatchNorm2d(num_features=32)
         self.relu3 = nn.ReLU()
         self.fc = nn.Linear(in_features=32*128*128, out_features=num_classes)
-        
 
     def forward(self, input):
         output = self.conv1(input)
@@ -54,7 +51,6 @@ class ConvNet(nn.Module):
             
         return output
         
-
     def predict(self, model, device, img_path, classes, transform):
         img = Image.open(img_path)
         img = transform(img).float().unsqueeze(0)

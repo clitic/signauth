@@ -7,8 +7,11 @@ from utils import *
 
 
 colorama.init(autoreset=True)
-os.chdir(os.path.split(__file__)[0])
 
+try:
+    os.chdir(os.path.split(__file__)[0])
+except:
+    pass
 
 def processimages(iterable:list, scan=False):
     """
@@ -21,18 +24,7 @@ def processimages(iterable:list, scan=False):
     Methods:
         reshape: resize images with respect to aspect ratio
         compress: resize images by compressing it from sides
-        centercrop: crop image center part of pixels 256x256 (ascept ratio mantained) 
-
-	    if method == "reshape":
-	        img.thumbnail((256, 256), Image.ANTIALIAS)
-
-	    elif method == "compress":
-	        img.resize((256, 256), Image.ANTIALIAS)
-
-	    elif method == "centercrop":
-	        width, height = img.size
-	        left, top, right, bottom = (width-256)/2, (height-256)/2, (width+256)/2, (height+256)/2
-	        img = img.crop((left, top, right, bottom))
+        centercrop: crop image center part of pixels 256x256 (ascept ratio mantained)
     """
 
     total_images = len(iterable)

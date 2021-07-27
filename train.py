@@ -19,7 +19,6 @@ parser.add_argument("--update", dest="update", action="store_true", default=Fals
                 help=f"update num_classes in predict.py (default: False)")
 args = parser.parse_args()
 
-
 # Updating num_classes in predict.py
 if args.update:
     with open("predict.py") as f:
@@ -32,23 +31,19 @@ if args.update:
     with open("predict.py", "w") as f:
         f.writelines(lines)
 
-
 # Hyper-parameters (Updated Through Command Line)
 num_classes = args.classes
 num_epochs = args.epochs
 batch_size = args.batchsize
 learning_rate = args.learningrate
 
-
 # Device configuration
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(f"Device: {str(device).upper()}\n")
 
-
 # Preprocessing - Finding Total Images
 train_count = len(globimgs("data/train", ["/**/*.jpg", "/**/*.png", "/**/*.jpeg"]))
 test_count = len(globimgs("data/test", ["/**/*.jpg", "/**/*.png", "/**/*.jpeg"]))
-
 
 # Dataset Load
 train_dataset = torchvision.datasets.ImageFolder(root="data/train", transform=transform)
@@ -57,12 +52,10 @@ test_dataset = torchvision.datasets.ImageFolder(root="data/test", transform=tran
 train_loader = torch.utils.data.DataLoader(dataset=train_dataset, batch_size=batch_size, shuffle=True)
 test_loader = torch.utils.data.DataLoader(dataset=test_dataset, batch_size=batch_size, shuffle=False)
 
-
 # Building Model
 model = ConvNet(num_classes=num_classes).to(device)
 criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate, weight_decay=0.0001)
-
 
 # Training And Testing Accuracy
 def reducefloat(floatno, digits=4):

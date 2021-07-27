@@ -1,7 +1,7 @@
 import torch
 
 
-class ptjit(object):
+class ptjit:
 	"""
 	load pytorch models without model class code
 

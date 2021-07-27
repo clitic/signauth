@@ -1,9 +1,20 @@
+# pytorch model related dependencies
 torch
 torchvision
 pillow
 colorama
 opencv-python
 numpy
-tensorflow
-onnx
-https://github.com/onnx/onnx-tensorflow/archive/master.zip
+
+# tflite model related dependencies
+# tensorflow
+# onnx
+# https://github.com/onnx/onnx-tensorflow/archive/master.zip
+
+# api related dependencies
+fastapi
+uvicorn
+python-multipart
+jinja2
+aiofiles
+rich
