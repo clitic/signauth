@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+
+    <header class="text-gray-600 body-font">
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+            <nav class="flex lg:w-2/5 flex-wrap items-center text-base md:ml-auto">
+            </nav>
+            <a
+                class="flex order-first lg:order-none lg:w-1/5 title-font font-medium items-center text-gray-900 lg:items-center lg:justify-center mb-4 md:mb-0">
+                <span class="ml-3 text-xl">SignAuth API</span>
+            </a>
+            <div class="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0">
+                <a href="/docs">
+                    <button
+                        class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">Documentation
+                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                            <path d="M5 12h14M12 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="px-4 py-3 bg-gray-50 text-center sm:px-6">
+        <p>Pytorch Handwritten Signatures Authentication Deep Learning Model</p>
+    </div>
+
+    <div>
+        <form action="/upload_image/" enctype="multipart/form-data" method="post">
+            <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                <div class="space-y-1 text-center">
+                    <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48"
+                        aria-hidden="true">
+                        <path
+                            d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <div class="flex text-sm text-gray-600">
+                        <label for="file_upload"
+                            class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
+                            <span>Upload a file</span>
+                            <input id="file_upload" name="file" type="file" class="sr-only" accept="image/*">
+                        </label>
+                        <p class="pl-1">or drag and drop</p>
+                    </div>
+                    <p class="text-xs text-gray-500">
+                        PNG, JPG, JPEG up to 10MB
+                    </p>
+                </div>
+            </div>
+    </div>
+
+    <div id="upload_image_preview_div"
+        class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-solid rounded-md">
+        <img id="upload_image_preview" src="#" class="object-contain h-48 w-full" />
+    </div>
+
+    <div class="px-4 py-3 bg-gray-50 text-center sm:px-6">
+        <button type="submit"
+            class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            Authenticate
+        </button>
+    </div>
+    </form>
+</body>
+
+<script>
+
+    $(document).ready(function () {
+        $("#upload_image_preview_div").hide()
+    });
+
+    file_upload.onchange = evt => {
+        const [file] = file_upload.files
+        if (file) {
+            upload_image_preview.src = URL.createObjectURL(file)
+        }
+
+        $("#upload_image_preview_div").show()
+    }
+</script>
+
+</html>
