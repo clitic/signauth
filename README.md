@@ -94,15 +94,20 @@ This will reshape images into ascpect ratio 1:1 and resize them to 256x256 with 
 For building model for api can be done by jitting the main model using a standard input and then used. Building of one such model can be done by the following command.
 
 ```bash
-python models/production.py
+python models/api_model.py
 ```
 
 > Note : You must run this script after training a model and getting an model.pth file in models folder.
 
+To run fastapi server on localhost first change directory to api and then run this command. 
+
+```bash
+uvicorn main:app --reload
+```
 
 ## Tensorflow Lite Model
 
-Once you have trained a model it is generated in models directory under name *model.pth*. To convert this model to tensorflow lite model first install all commentend dependencies in [requirements.txt](requirements.txt) then run the following commands.
+Once you have trained a model it is generated in models directory under name *model.pth*. To convert this model to tensorflow lite model first install all *commented* dependencies in [requirements.txt](requirements.txt) then run the following commands.
 
 The model conversion chain is followed as *pytorch -> onnx -> tf -> tflite*.
 
