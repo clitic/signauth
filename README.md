@@ -105,6 +105,19 @@ To run fastapi server on localhost first change directory to api and then run th
 uvicorn main:app --reload
 ```
 
+Test API by uploading local image.
+
+```python
+import requests
+
+files = {
+  "file": ("00503005.png", open("00503005.png", "rb"), "image/png")
+}
+
+response = requests.post("http://127.0.0.1:8000/upload_image", files=files)
+print(response.json())
+```
+
 ## Tensorflow Lite Model
 
 Once you have trained a model it is generated in models directory under name *model.pth*. To convert this model to tensorflow lite model first install all *commented* dependencies in [requirements.txt](requirements.txt) then run the following commands.

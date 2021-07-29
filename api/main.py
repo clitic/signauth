@@ -1,6 +1,5 @@
 from fastapi import FastAPI, File, UploadFile, Query, HTTPException, status, Request
 from fastapi.responses import HTMLResponse
-from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from typing import Optional
 from rich.console import Console
@@ -12,7 +11,6 @@ import uuid
 
 
 app = FastAPI()
-app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 console = Console()
 

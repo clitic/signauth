@@ -37,28 +37,27 @@
     </div>
 
     <div>
-        <form action="/upload_image/" enctype="multipart/form-data" method="post">
-            <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
-                <div class="space-y-1 text-center">
-                    <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48"
-                        aria-hidden="true">
-                        <path
-                            d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                    <div class="flex text-sm text-gray-600">
-                        <label for="file_upload"
-                            class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
-                            <span>Upload a file</span>
-                            <input id="file_upload" name="file" type="file" class="sr-only" accept="image/*">
-                        </label>
-                        <p class="pl-1">or drag and drop</p>
-                    </div>
-                    <p class="text-xs text-gray-500">
-                        PNG, JPG, JPEG up to 10MB
-                    </p>
+        <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+            <div class="space-y-1 text-center">
+                <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48"
+                    aria-hidden="true">
+                    <path
+                        d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <div class="flex text-sm text-gray-600">
+                    <label for="file_upload"
+                        class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
+                        <span>Upload a file</span>
+                        <input id="file_upload" name="file" type="file" class="sr-only" accept="image/*">
+                    </label>
+                    <p class="pl-1">or drag and drop</p>
                 </div>
+                <p class="text-xs text-gray-500">
+                    PNG, JPG, JPEG up to 10MB
+                </p>
             </div>
+        </div>
     </div>
 
     <div id="upload_image_preview_div"
@@ -67,18 +66,86 @@
     </div>
 
     <div class="px-4 py-3 bg-gray-50 text-center sm:px-6">
-        <button type="submit"
+        <label class="inline-flex items-center">
+            <input id="scan_check" type="checkbox" class="form-checkbox text-indigo-600">
+            <span class="ml-2">Scan</span>
+        </label>
+    </div>
+
+    <div class="px-4 py-3 bg-gray-50 text-center sm:px-6">
+        <button id="auth_button"
             class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
             Authenticate
         </button>
     </div>
-    </form>
+
+    <div id="popup_results_div" class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog"
+        aria-modal="true">
+        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+
+            <div
+                class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                    <div class="sm:flex sm:items-start">
+                        <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                            <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
+                                Results
+                            </h3>
+                            <div class="mt-2">
+                                <p id="result_para" class="text-sm text-gray-500">All results will appear here</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                    <button id="close_popup" type="button"
+                        class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+                        OK
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 
 <script>
-
     $(document).ready(function () {
+        $("#popup_results_div").hide()
         $("#upload_image_preview_div").hide()
+
+        $("#close_popup").click(function () {
+            $("#popup_results_div").hide()
+        });
+
+        $("#auth_button").click(function () {
+            let url = "/upload_image/";
+
+            if (document.getElementById("scan_check").checked) {
+                url += "?scan=true";
+            }
+
+            var form = new FormData();
+            form.append("file", file_upload.files[0], file_upload.files[0]);
+
+            var settings = {
+                "url": url,
+                "method": "POST",
+                "timeout": 0,
+                "processData": false,
+                "mimeType": "multipart/form-data",
+                "contentType": false,
+                "data": form
+            };
+
+            $.ajax(settings).done(function (response) {
+                let data = JSON.parse(response);
+                $("#result_para").text(`Uploaded image was classified as ${data["prediction"]} signature. (scanned: ${data["scan"]})`);
+                $("#popup_results_div").show();
+            });
+        });
     });
 
     file_upload.onchange = evt => {
