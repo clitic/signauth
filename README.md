@@ -1,8 +1,8 @@
 # SignAuth - Handwritten Signatures Authentication
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/360modder/signauth/master/others/sample.jpg">
-  <a href="https://colab.research.google.com/github/360modder/signauth/blob/master/others/SignAuth_Google_Colab.ipynb">
+  <img src="https://raw.githubusercontent.com/clitic/signauth/master/others/sample.jpg">
+  <a href="https://colab.research.google.com/github/clitic/signauth/blob/master/others/SignAuth_Google_Colab.ipynb">
     <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
   </a>
 </p>
@@ -26,7 +26,7 @@ So if XXX equal ZZZ then it is a real signature, and if XXX notequal to ZZZ then
 - Intitial Setup
 
 ```bash
-git clone https://www.github.com/360modder/signauth.git
+git clone https://www.github.com/clitic/signauth.git
 cd signauth
 pip install -r requirements.txt
 ```
@@ -139,6 +139,6 @@ This command will create a tflite model in models directory. You can further twe
 
 ## License
 
-© 2021 360modder
+© 2021 clitic
 
 This repository is licensed under the MIT license. See LICENSE for details.
